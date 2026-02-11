@@ -22,6 +22,16 @@ app.get("/notes",(req,res)=>{
     })
 })
 
+//GET note by title
+app.get("/notes/:title",(req,res)=>{
+    const title = req.params.title;
+    const note = notes.find(n => n.title === title);
+    res.status(201).json({
+        message:"Notes fetched",
+        note:note
+    })
+})
+
 // DELETE Note
 app.delete("/notes/:index",(req,res)=>{
     const index = req.params.index;
