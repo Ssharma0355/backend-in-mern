@@ -3,9 +3,12 @@ const express = require("express")
 const app = express()
 app.use(express.json()) // any request body data to convernt into readable for express 
 
+const notes =[];
 app.post("/notes",(req,res)=>{
-    console.log(req.body)
-    res.send("Runnningg",req.body)
+    notes.push(req.body)
+    res.status(201).json({
+        message:"Notes Created successfully"
+    })
 })
 
 
